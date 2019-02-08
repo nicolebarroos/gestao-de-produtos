@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Criar novo produto{% endblock %}
+{% block content %}
+{% for produto in produtos %}
+
+<div class="row">
+        <div class="col-sm">
+                <div class="list-group">
+                        <a href="{% url  'produtos_update' produto.id %}" class="list-group-item">{{ produto.nome }}</a>
+      
+                </div>
+        </div>
+        <div class="col-sm">
+                        <a href="{% url 'produtos_delete' produto.id %}" class="btn btn-danger">Deletar</a>
+        </div>
+</div>
+
+
+{% endfor %}
+{% endblock %}

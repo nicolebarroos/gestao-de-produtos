@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %}Criar novo produto{% endblock %}
+{% block content %}
+<br />
+
+    <!--Página de crição de um novo produto-->
+    <!--Criação do form, na página produtos_new, que é a página de criação do novo produto-->
+    <form method="POST">
+        {% csrf_token %}
+        <!--Aqui referenciamos o form-->
+        {{form|bootstrap}}
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        
+
+    </form>
+{% endblock %}

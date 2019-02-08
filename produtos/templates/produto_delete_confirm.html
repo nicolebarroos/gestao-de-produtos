@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %}Confirmar deleção{% endblock %}
+{% block content %}
+
+<br />
+<h3>Tem certeza que deseja deletar {{produto.nome}}?</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <!--Aqui referenciamos o form-->
+        
+        <button type="submit" class="btn btn-danger">Deletar</button>
+
+    </form>
+
+{% endblock %}
