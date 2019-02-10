@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Produto 
 from .forms import ProdutoForm
+
 def produtos_list(request):
     produtos = Produto.objects.all() #Seria como dar select*from no banco de dados
     return render(request, "produto.html", {'produtos' : produtos})
