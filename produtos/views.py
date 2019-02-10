@@ -1,11 +1,29 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 from .models import Produto 
 from .forms import ProdutoForm
 
+from django.contrib.auth import authenticate, login
+
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...
+
+@login_required
 def produtos_list(request):
     produtos = Produto.objects.all() #Seria como dar select*from no banco de dados
     return render(request, "produto.html", {'produtos' : produtos})
 
+@login_required
 #Criando view para receber a criação dos novos produtos
 def produtos_new(request):
     form = ProdutoForm(request.POST or None) #Receberá dos forms, onde vai fazer uma requisição post, caso não tenha: None,
@@ -15,6 +33,7 @@ def produtos_new(request):
         return redirect('produtos_list')
     return render(request, 'produtos_new.html', {'form': form})
 
+@login_required
 def produtos_update(request, id):
     produto = get_object_or_404(Produto, pk=id)
     form = ProdutoForm(request.POST or None, instance=produto)
@@ -23,6 +42,7 @@ def produtos_update(request, id):
         return redirect('produtos_list')
     return render(request, 'produtos_new.html', {'form': form})
 
+@login_required
 def produtos_delete(request, id):
     produto = get_object_or_404(Produto, pk=id)
     form = ProdutoForm(request.POST or None, instance=produto)
