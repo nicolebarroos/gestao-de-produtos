@@ -10,7 +10,7 @@ def produtos_list(request):
 
     if termo_busca:
         produtos = Produto.objects.all() #Seria como dar select*from no banco de dados
-        produtos = produtos.filter(nome=termo_busca)
+        produtos = produtos.filter(nome__icontains=termo_busca)
     else:
         produtos = Produto.objects.all()
     return render(request, "produto.html", {'produtos' : produtos})

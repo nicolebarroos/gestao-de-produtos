@@ -2,9 +2,35 @@
 {% load bootstrap %}
 {% block title %}Confirmar deleção{% endblock %}
 {% block content %}
+<br />
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="col-md-6">
+                <h4>Confirmação</h4>
+        </div>
+        <div class="col-md-6">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                        <li class="nav-item">
+                                <a class="nav-link" href="{% url 'home' %} "><h6>Home</h6></a>
+                        </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'produtos_list' %}"><h6>Listar produtos</h6></a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{% url 'produtos_new' %}"><h6>Criar novo produto</h6></a>
+                          </li>
+                    
+                  </ul>
+                </div>
+        </div>
+</nav>
 
 <br />
-<h3>Tem certeza que deseja deletar {{produto.nome}}?</h3>
+<h5>Tem certeza que deseja deletar {{produto.nome}}?</h5>
     <form method="POST">
         {% csrf_token %}
         <!--Aqui referenciamos o form-->
