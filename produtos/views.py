@@ -5,7 +5,14 @@ from .forms import ProdutoForm
 
 @login_required
 def produtos_list(request):
-    produtos = Produto.objects.all() #Seria como dar select*from no banco de dados
+    termo_busca = request.GET.get('pesquisa', None)#requeste get para buscar dado 
+    #'pesquisa' é referenciado no meu template como id do campo de busca
+
+    if termo_busca:
+        produtos = Produto.objects.all() #Seria como dar select*from no banco de dados
+        produtos = produtos.filter(nome=termo_busca)
+    else:
+        produtos = Produto.objects.all()
     return render(request, "produto.html", {'produtos' : produtos})
 
 @login_required
