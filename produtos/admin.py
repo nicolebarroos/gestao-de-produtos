@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Produto, Codigo, Pessoas, Compra
+from .models import Produto, Codigo
 
 class UserAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
@@ -10,5 +10,3 @@ class UserAdmin(admin.ModelAdmin):
 
 admin.site.register(Produto, UserAdmin)
 admin.site.register(Codigo)
-admin.site.register(Pessoas)
-admin.site.register(Compra)
