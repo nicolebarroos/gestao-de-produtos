@@ -6,7 +6,12 @@
 
 {% for cadastro in cadastro %}
 
-   <h6> {{ cadastro.nome }} </h6>
+<li class="list-group-item">
+    <a href="{% url 'update_clientes' cadastro.id %}">{{ cadastro.nome }}</a>
+    <a href="{% url 'delete_clientes' cadastro.id %}" class="trash-item">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+    </a>
+</li>
 
 {% endfor %}
 
