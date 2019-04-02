@@ -16,5 +16,8 @@ class Produto(models.Model):
     marca = models.CharField(max_length=30)
     cod = models.OneToOneField(Codigo, null=True, blank=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nome
+
 
 

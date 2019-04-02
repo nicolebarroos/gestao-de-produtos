@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'produtos',
     'clientes',
+    'venda',
     
 ]
 
