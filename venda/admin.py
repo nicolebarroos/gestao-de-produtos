@@ -5,7 +5,11 @@ from .models import ItemDoPedido
 class ItemPedidoInLine(admin.TabularInline):
     model = ItemDoPedido
     extra = 1
-   
 
-admin.site.register(Venda)
+class VendaAdmin(admin.ModelAdmin):
+    list_filter = ('clientes__doc', )
+    inlines = [ItemPedidoInLine]
+
+admin.site.register(Venda, VendaAdmin)
 admin.site.register(ItemDoPedido)
+
