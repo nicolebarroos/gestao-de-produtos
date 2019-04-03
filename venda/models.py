@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Sum, F, FloatField, Max
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.contrib.auth.models import Permission
 from clientes.models import Cadastro
 from produtos.models import Produto
 
@@ -13,6 +14,12 @@ class Venda(models.Model):
     impostos = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     clientes = models.ForeignKey(Cadastro, null=True, blank=True, on_delete=models.PROTECT)
     nfe_emitida = models.BooleanField(default=False)
+
+    class Meta:
+        permissions = (
+            ('setar_nfe', 'Usuário pode alterar parâmetro NF-e'),
+            ('permissão 2', 'Descrição da permissão 2'),
+        )
 
     #Calculando o total do pedido com funções agregadas - Sum
     
